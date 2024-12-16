@@ -1,0 +1,39 @@
+
+.custom-card {
+    background-color: #343a40;
+    color: #ffffff;
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .custom-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .custom-card img {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .custom-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .custom-card .card-body {
+    text-align: center;
+  }
+
+  .custom-card:hover .card-body {
+    color: #17a2b8;
+  }
+
+  .text-decoration-none {
+    transition: color 0.3s ease;
+  }
+
+  .text-decoration-none:hover {
+    color: #0d6efd;
+  }
