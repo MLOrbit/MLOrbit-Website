@@ -1,365 +1,356 @@
-/* Root Variables for Theming */
+/* Add these new variables to :root */
 :root {
-    --color-background: #121212;
-    --color-card-bg: #1e1e1e;
-    --color-header-bg: #282828;
-    --color-border: #333;
-    --color-text: #e0e0e0;
-    --color-text-primary: #ffffff;
-    --color-accent: #0d81ff;
-    --color-accent-hover: #0a66cc;
-    --color-progress-bg: #333;
-    --color-progress-bar: linear-gradient(90deg, #0d81ff, #0a66cc);
-    --font-family: 'Roboto', sans-serif;
-    --transition-speed: 0.3s;
+    /* ... existing variables ... */
+    --color-gradient-1: linear-gradient(135deg, #0d81ff 0%, #00e5ff 100%);
+    --color-gradient-2: linear-gradient(135deg, #0a66cc 0%, #0055a4 100%);
+    --box-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.3);
+    --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Global Styles */
-body {
-    background-color: var(--color-background);
-    margin: 0;
-    font-family: var(--font-family);
-    color: var(--color-text);
-}
-
-/* Container for the entire DSA Progress component */
+/* Enhanced Container Styling */
 .dsa-progress-container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 2rem 1.5rem;
-    background-color: var(--color-background);
-    color: var(--color-text);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    border-radius: 12px;
-    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(
+        to bottom right,
+        rgba(30, 30, 30, 0.9),
+        rgba(20, 20, 20, 0.95)
+    );
 }
 
-/* Page Title */
+/* Enhanced Title Animation */
 .dsa-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    font-weight: bold;
-    color: var(--color-text-primary);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-
-/* Progress Bar */
-.progress-bar-container {
-    height: 25px;
-    background: var(--color-progress-bg);
-    border-radius: 12.5px;
-    overflow: hidden;
-    margin: 20px 0;
     position: relative;
-    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+    background: var(--color-gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: titlePulse 2s infinite alternate;
 }
 
+@keyframes titlePulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.03); }
+}
+
+/* Enhanced Progress Bar */
 .progress-bar {
-    height: 100%;
-    background: var(--color-progress-bar);
-    transition: width var(--transition-speed) ease;
-    text-align: center;
-    line-height: 25px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 12.5px 0 0 12.5px;
-}
-
-/* Filter and Search */
-.filter-search-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-.topic-filter {
-    flex: 1 1 45%;
-    margin-bottom: 1rem;
-}
-
-.topic-filter select {
-    width: 100%;
-    padding: 0.6rem;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background-color: var(--color-card-bg);
-    color: var(--color-text);
-    outline: none;
-    transition: border-color var(--transition-speed);
-    font-size: 1rem;
-}
-
-.topic-filter select:hover,
-.topic-filter select:focus {
-    border-color: var(--color-accent);
-}
-
-.search-container {
-    flex: 1 1 45%;
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
-}
-
-.search-container input {
-    padding: 0.6rem;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background-color: var(--color-card-bg);
-    color: var(--color-text);
-    outline: none;
-    width: 100%;
-    max-width: 300px;
-    transition: border-color var(--transition-speed);
-    font-size: 1rem;
-}
-
-.search-container input:focus {
-    border-color: var(--color-accent);
-}
-
-/* Lecture Cards */
-.dsa-lecture {
-    background-color: var(--color-card-bg);
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    background: var(--color-gradient-1);
+    box-shadow: 0 0 15px rgba(13, 129, 255, 0.5);
+    position: relative;
     overflow: hidden;
 }
 
-.dsa-lecture:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-}
-
-.dsa-lecture.completed {
-    opacity: 0.8;
-}
-
-/* Lecture Header */
-.dsa-lecture-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    padding: 1rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background-color: var(--color-header-bg);
-    border-bottom: 1px solid var(--color-border);
-    transition: background-color var(--transition-speed);
-}
-
-.dsa-lecture-header:hover {
-    background-color: #3a3a3a;
-}
-
-.dsa-lecture-header h2 {
-    margin: 0;
-    font-weight: bold;
-    color: var(--color-text-primary);
-    display: flex;
-    align-items: center;
-}
-
-.dsa-lecture-header h2.completed {
-    color: #a0a0a0;
-    text-decoration: line-through;
-}
-
-.dsa-lecture-header span {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-text);
-    transition: transform var(--transition-speed);
-}
-
-.dsa-lecture-header[aria-expanded="true"] span {
-    transform: rotate(180deg);
-}
-
-/* Checkbox */
-.completed-checkbox {
-    margin-right: 0.75rem;
-    transform: scale(1.2);
-    cursor: pointer;
-    accent-color: var(--color-accent);
-    transition: transform var(--transition-speed);
-}
-
-.completed-checkbox:hover {
-    transform: scale(1.3);
-}
-
-/* Lecture Content */
-.dsa-lecture-content {
-    padding: 1.5rem;
-    animation: fadeIn var(--transition-speed) ease-in-out;
-    background-color: var(--color-card-bg);
-    color: var(--color-text);
-}
-
-.lecture-video {
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-height: 360px;
-    height: auto;
-    border-radius: 6px;
-    border: 2px solid var(--color-border);
-    margin-bottom: 1.5rem;
-    transition: transform var(--transition-speed) ease;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Enhanced Lecture Cards */
+.dsa-lecture {
+    position: relative;
+    background: linear-gradient(
+        145deg,
+        var(--color-card-bg),
+        rgba(40, 40, 40, 0.9)
+    );
+}
+
+.dsa-lecture::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-gradient-1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dsa-lecture:hover::before {
+    opacity: 1;
+}
+
+/* Enhanced Input Fields */
+.topic-filter select,
+.search-container input {
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(30, 30, 30, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s var(--animation-bounce);
+}
+
+.topic-filter select:focus,
+.search-container input:focus {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    box-shadow: 0 5px 15px rgba(13, 129, 255, 0.2);
+}
+
+/* Enhanced Checkbox */
+.completed-checkbox {
+    position: relative;
+    transition: all 0.3s var(--animation-bounce);
+}
+
+.completed-checkbox:checked {
+    animation: checkboxPop 0.5s var(--animation-bounce);
+}
+
+@keyframes checkboxPop {
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1.2); }
+}
+
+/* Enhanced Video Container */
+.lecture-video {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s var(--animation-bounce);
 }
 
 .lecture-video:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--box-shadow-hover);
 }
 
-/* Questions and Topics */
-.topics-list, .questions-list {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 1rem;
-}
-
-.topics-list li, .questions-list li {
-    margin-bottom: 0.6rem;
-    color: var(--color-text);
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.questions-list li a {
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: color var(--transition-speed);
-}
-
-.questions-list li a:hover {
-    color: var(--color-accent-hover);
-    text-decoration: underline;
-}
-
-/* Additional Sections */
-.additional-section {
-    background-color: var(--color-card-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    transition: background-color var(--transition-speed);
-}
-
-.additional-section:hover {
-    background-color: #2a2a2a;
-}
-
-.additional-section h2 {
-    margin-bottom: 1rem;
-    color: var(--color-text-primary);
-    font-size: 1.5rem;
-    border-bottom: 2px solid var(--color-border);
-    padding-bottom: 0.5rem;
-}
-
-.additional-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.additional-section ul li {
-    margin-bottom: 0.5rem;
-}
-
+/* Enhanced Links */
+.questions-list li a,
 .additional-section ul li a {
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: color var(--transition-speed);
+    position: relative;
+    padding-bottom: 2px;
 }
 
-.additional-section ul li a:hover {
-    color: var(--color-accent-hover);
-    text-decoration: underline;
+.questions-list li a::after,
+.additional-section ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--color-gradient-1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
 }
 
-/* Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
+.questions-list li a:hover::after,
+.additional-section ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+/* Enhanced Loading States */
+.loading-state {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.9; }
+    100% { opacity: 0.6; }
+}
+
+/* Enhanced Button Styles */
+.action-button {
+    background: var(--color-gradient-1);
+    transition: all 0.3s var(--animation-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.action-button:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: all 0.4s var(--animation-bounce);
+    transform-style: preserve-3d;
+}
+
+.card-hover:hover {
+    transform: rotateX(5deg) rotateY(5deg);
+    box-shadow: 
+        -5px -5px 15px rgba(255, 255, 255, 0.1),
+        5px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Scroll Bar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(30, 30, 30, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gradient-2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gradient-1);
+}
+/* Enhanced Focus States */
+*:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+/* Enhanced Error States */
+.error-state {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 70% { transform: translateX(-2px); }
+    40%, 60% { transform: translateX(1px); }
+}
+
+/* Enhanced Success States */
+.success-state {
+    animation: successPop 0.4s var(--animation-bounce);
+}
+
+@keyframes successPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Enhanced Card Flip Animation */
+.flip-card {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Enhanced Text Selection */
+::selection {
+    background: var(--color-accent);
+    color: var(--color-text);
+}
+/* Rotating Plus Icon Animation */
+.lecture-toggle-icon {
+    transition: transform 0.4s var(--animation-bounce);
+}
+
+.lecture-expanded .lecture-toggle-icon {
+    transform: rotate(45deg);
+}
+/* Enhanced Tooltip */
+.tooltip {
+    position: relative;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s var(--animation-bounce);
+}
+
+.tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Glowing Effect */
+.glow-effect {
+    position: relative;
+}
+
+.glow-effect::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--color-gradient-1);
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.glow-effect:hover::after {
+    opacity: 0.5;
+}
+
+/* Ripple Effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes rippleEffect {
     to {
-        opacity: 1;
-        transform: translateY(0);
+        transform: scale(4);
+        opacity: 0;
     }
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .dsa-progress-container {
-        max-width: 750px;
-    }
+/* Floating Animation */
+.floating {
+    animation: float 3s ease-in-out infinite;
 }
 
-@media (max-width: 768px) {
-    .filter-search-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .topic-filter, .search-container {
-        flex: 1 1 100%;
-        margin-bottom: 1rem;
-    }
-
-    .search-container {
-        justify-content: flex-start;
-    }
-
-    .search-container input {
-        max-width: 100%;
-    }
-
-    .lecture-video {
-        max-height: 250px;
-    }
-
-    .progress-bar {
-        font-size: 0.9rem;
-    }
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
 
-@media (max-width: 480px) {
-    .dsa-title {
-        font-size: 2rem;
-    }
+/* Skeleton Loading */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(40, 40, 40, 0.8) 25%,
+        rgba(60, 60, 60, 0.8) 37%,
+        rgba(40, 40, 40, 0.8) 63%
+    );
+    background-size: 400% 100%;
+    animation: skeleton-loading 1.4s ease infinite;
+}
 
-    .dsa-lecture-header {
-        padding: 0.8rem;
-        font-size: 1rem;
-    }
-
-    .dsa-lecture-header span {
-        font-size: 1.2rem;
-    }
-
-    .completed-checkbox {
-        transform: scale(1.1);
-    }
-
-    .dsa-lecture-content {
-        padding: 1rem;
-    }
-
-    .additional-section {
-        padding: 1rem;
-    }
+@keyframes skeleton-loading {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
 }
