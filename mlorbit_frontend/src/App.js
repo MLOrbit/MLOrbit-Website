@@ -2,18 +2,26 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Sections from "./components/Sections";
-import WelcomeSection from "./components/WelcomeSection";
 import Footer from "./components/Footer";
-import Login from "./login/LoginPage"; // Corrected path
-import AboutSection from "./components/AboutSection";
+
+// Sections
+import WelcomeSection from "./components/WelcomeSection";
+import Sections from "./components/Sections";
 import RecommendedSections from "./components/RecommendedSections";
 
+// Pages
+import AboutSection from "./components/AboutSection";
+import Login from "./login/LoginPage";
 import Algorithms from "./pages/Algorithms";
 import DataStructures from "./pages/DataStructures";
 import MachineLearning from "./pages/MachineLearning";
+import ExploreML from "./ExploreML/ExploreML";
+import AdvancedPDFViewer from "./ExploreML/AdvancedPDFViewer";
+
+// Protected Pages
 import DSAProgress from "./dsaProgress/components/DSAProgress"; // Corrected path
 
+// User Context and Private Routes
 import { UserProvider } from "./components/userDetails/UserContext"; // Corrected path
 import PrivateRoute from "./components/PrivateRoute"; // Corrected path
 
@@ -23,7 +31,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          {/* Public Routes */}
+          {/* Home Page */}
           <Route
             path="/"
             element={
@@ -31,17 +39,20 @@ function App() {
                 <WelcomeSection />
                 <Sections />
                 <RecommendedSections />
-                <Footer />
               </>
             }
           />
+
+          {/* Public Pages */}
           <Route path="/about" element={<AboutSection />} />
           <Route path="/login" element={<Login />} />
           <Route path="/algorithms" element={<Algorithms />} />
           <Route path="/data-structures" element={<DataStructures />} />
           <Route path="/machine-learning" element={<MachineLearning />} />
+          <Route path="/explore-ml" element={<ExploreML />} />
+          <Route path="/view-pdf" element={<AdvancedPDFViewer />} />
 
-          {/* Protected Route */}
+          {/* Protected Pages */}
           <Route
             path="/dsa-progress"
             element={
@@ -51,6 +62,8 @@ function App() {
             }
           />
         </Routes>
+        {/* Footer will remain visible on all pages */}
+        <Footer />
       </Router>
     </UserProvider>
   );

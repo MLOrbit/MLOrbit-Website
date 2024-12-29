@@ -55,10 +55,11 @@ function WelcomeSection() {
         <a href="#courses" className="btn btn-primary">
           Free Notes
         </a>
-        <a href="#blog" className="btn btn-outline-dark">
+        <a href="/explore-ml" className="btn btn-outline-dark">
           Explore ML
         </a>
       </div>
+
     </div>
   );
 }

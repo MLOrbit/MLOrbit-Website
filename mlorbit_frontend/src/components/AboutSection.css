@@ -4,60 +4,100 @@
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 3rem;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(13, 202, 240, 0.2);
+  }
+
+  .about-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #0dcaf0, transparent);
   }
 
   .about-box {
-    background-color: #242424;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    padding: 2rem;
-    transition: box-shadow 0.3s ease;
+    background: linear-gradient(145deg, #2a2a2a, #242424);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .about-box:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(13, 202, 240, 0.2);
   }
 
   .about-image {
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 16px;
+    transition: all 0.5s ease;
     max-width: 100%;
     height: auto;
+    filter: brightness(0.95);
   }
 
   .about-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 12px 24px rgba(13, 202, 240, 0.3);
+    filter: brightness(1.1);
   }
 
   .about-text {
     color: #e0e0e0;
-    padding: 1rem;
+    padding: 1.5rem;
+    opacity: 0.95;
+    transition: opacity 0.3s ease;
+  }
+
+  .about-text:hover {
+    opacity: 1;
   }
 
   .about-text h3 {
     color: #0dcaf0;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
   }
 
   .about-text p {
-    line-height: 1.8;
-    font-size: 1.1rem;
+    line-height: 1.9;
+    font-size: 1.15rem;
+    color: rgba(224, 224, 224, 0.9);
   }
 
   @media (max-width: 1200px) {
     .about-container {
       max-width: 95%;
+      padding: 0 1rem;
     }
   }
 
   @media (max-width: 768px) {
     .about-box {
       text-align: center;
+      padding: 1.5rem;
     }
 
     .about-text {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .about-title {
+      font-size: 2rem;
+    }
+
+    .about-text h3 {
+      font-size: 1.6rem;
+    }
+
+    .about-text p {
+      font-size: 1rem;
     }
   }

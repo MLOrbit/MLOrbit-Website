@@ -1,27 +1,48 @@
 /* Basic styles for the dark mode toggle */
 .dark-mode-toggle {
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0.5em;
-    border-radius: 50%;
-    transition: background-color 0.2s, transform 0.2s;
-  }
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.6em;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
 
-  .dark-mode-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: scale(1.05);
-  }
+.dark-mode-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
 
-  /* Dark mode styles applied to the body */
-  body.dark-mode {
-    background-color: #121212;
-    color: #f1f1f1;
-  }
+.dark-mode-toggle:active {
+  transform: scale(0.95);
+}
 
-  /* Example styling for icons (if needed) */
-  .fas.fa-sun, .fas.fa-moon {
-    pointer-events: none;
-  }
+/* Dark mode styles applied to the body */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+  transition: all 0.3s ease;
+}
+
+/* Icon styles */
+.fas.fa-sun, .fas.fa-moon {
+  pointer-events: none;
+  transition: transform 0.4s ease;
+}
+
+.dark-mode-toggle:hover .fas {
+  transform: rotate(360deg);
+}
+
+/* Smooth transition for light mode */
+body {
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+  color: #333333;
+}

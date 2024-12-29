@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { emailLogin, emailSignup, googleLogin } from "./AuthService";
 import { useNavigate } from "react-router-dom";
-import "./LoginPage.css"; // Import the enhanced CSS
+import "./LoginPage.css"; // Enhanced CSS
 import { UserContext } from "../context/UserContext"; // Global user context
 
 const LoginPage = () => {
@@ -18,6 +18,11 @@ const LoginPage = () => {
         ? await emailLogin(email, password)
         : await emailSignup(email, password);
       setUser({ name: userCredential.displayName || email });
+
+      // Set user's last-read progress
+      const progress = JSON.parse(localStorage.getItem("userProgress")) || {};
+      setUser((prev) => ({ ...prev, progress }));
+
       alert(isLogin ? "Login successful!" : "Signup successful!");
       navigate("/");
     } catch (error) {
@@ -29,6 +34,11 @@ const LoginPage = () => {
     try {
       const userCredential = await googleLogin();
       setUser({ name: userCredential.displayName || userCredential.email });
+
+      // Set user's last-read progress
+      const progress = JSON.parse(localStorage.getItem("userProgress")) || {};
+      setUser((prev) => ({ ...prev, progress }));
+
       alert("Google Login successful!");
       navigate("/");
     } catch (error) {
@@ -39,7 +49,7 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-content row align-items-center justify-content-center">
-        {/* Left Side - Animated Background */}
+        {/* Left Section - Welcome Animation */}
         <div className="col-md-6 left-section d-none d-md-block">
           <h1 className="welcome-text mb-4">Welcome to MLOrbit</h1>
           <p className="tagline">
@@ -52,12 +62,11 @@ const LoginPage = () => {
           />
         </div>
 
-        {/* Right Side - Login Form */}
+        {/* Right Section - Login Form */}
         <div className="col-md-5 col-sm-12 form-section">
           <h2 className="text-center mb-4 fw-bold">
             {isLogin ? "Login to MLOrbit" : "Create Your Account"}
           </h2>
-
           <form onSubmit={handleEmailSubmit} className="form-container">
             <input
               type="email"

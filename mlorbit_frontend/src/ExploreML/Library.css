@@ -1,0 +1,34 @@
+.library {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .book-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .book-cover {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-item p {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
