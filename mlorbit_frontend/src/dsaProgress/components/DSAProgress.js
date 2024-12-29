@@ -1,4 +1,3 @@
-// DSAProgress.jsx
 import React, { useState, useEffect, useRef } from "react";
 import "../dsaProgress.css";
 const lectures = [
@@ -1101,9 +1100,6 @@ const additionalSections = [
         ],
     },
 ];
-const mlectures = [];
-
-// Add remaining lectures to the main lectures array
 lectures.push(
     // Lecture 60
     {
@@ -1959,12 +1955,7 @@ lectures.push(
     }
 );
 
-// Initialize the lectures array if not already initialized
-const klectures = [
-    // ... (Previous lectures 60 to 94)
-];
 
-// Add remaining lectures to the main lectures array
 lectures.push(
     // Lecture 95
     {
