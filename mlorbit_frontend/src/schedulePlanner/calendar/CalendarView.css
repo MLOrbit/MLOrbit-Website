@@ -1,0 +1,465 @@
+/* src/schedulePlanner/calendar/CalendarView.css */
+
+/* General Styles */
+.calendar-view {
+    padding: 25px;
+    font-family: 'Arial', sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    margin: 20px;
+    position: relative;
+  }
+  
+  .calendar-view.minimized {
+    padding: 15px;
+    text-align: center;
+    transform: scale(0.98);
+    margin: 10px;
+  }
+  
+  /* Header Styles */
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 10px 0;
+    animation: slideDown 0.5s ease-out;
+    border-bottom: 2px solid #eee;
+  }
+  
+  .calendar-header h3 {
+    font-size: 1.5em;
+    color: #333;
+    letter-spacing: 0.5px;
+  }
+  
+  .toggle-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    transform: scale(1);
+    letter-spacing: 0.5px;
+  }
+  
+  .toggle-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+  }
+  
+  /* Progress Bar */
+  .progress-bar-container {
+    margin-bottom: 20px;
+    animation: fadeIn 0.6s ease-out;
+  }
+  .progress-bar-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  .progress-bar {
+    width: 100%;
+    height: 16px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 6px;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    background-color: #28a745;
+    transition: width 0.4s ease;
+  }
+  
+  /* Search & Filter Bar */
+  .search-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .search-input,
+  .filter-select {
+    flex: 1 1 200px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+  .search-input:focus,
+  .filter-select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Add Task Form Styles */
+  .add-task-form {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.6s ease-out;
+    position: relative;
+  }
+  
+  .add-task-form::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 30px;
+    height: 5px;
+    background: linear-gradient(to right, #007bff, #28a745, #dc3545);
+    border-radius: 3px;
+  }
+  
+  .add-task-form h4 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.2em;
+    letter-spacing: 0.5px;
+    position: relative;
+  }
+  
+  .add-task-form h4::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #007bff;
+    margin-top: 5px;
+    border-radius: 2px;
+  }
+  
+  .add-task-form form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .add-task-form input[type="text"],
+  .add-task-form input[type="date"],
+  .add-task-form input[type="time"],
+  .add-task-form input[type="color"],
+  .add-task-form select {
+    flex: 1 1 150px;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .add-task-form input[type="text"]:focus,
+  .add-task-form input[type="date"]:focus,
+  .add-task-form input[type="time"]:focus,
+  .add-task-form input[type="color"]:focus,
+  .add-task-form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+  
+  .add-update-button {
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    flex: 1 1 100%;
+    font-weight: bold;
+  }
+  
+  .add-update-button:hover {
+    background-color: #218838;
+  }
+  
+  .cancel-button {
+    padding: 12px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    flex: 1 1 100%;
+    font-weight: bold;
+  }
+  
+  .cancel-button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Calendar Grid Styles */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .calendar-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure content and actions are spaced */
+    min-height: 180px; /* Adjust as needed */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: white;
+    overflow: visible; /* Allow content to spill outside */
+}
+
+.calendar-cell .icons-container {
+    display: flex;
+    justify-content: center; /* Adjust alignment if needed */
+    gap: 10px; /* Spacing between icons */
+    position: absolute;
+    bottom: 10px; /* Fix the vertical position */
+    right: 10px; /* Fix the horizontal position */
+}
+
+.calendar-cell .icons-container > * {
+    width: 20px; /* Icon size */
+    height: 20px; /* Icon size */
+    cursor: pointer; /* Add pointer for interactivity */
+}
+
+.calendar-cell:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Add hover effect for better visibility */
+}
+
+
+  
+  .calendar-cell:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  /* Overdue highlight */
+  .calendar-cell.overdue {
+    border: 2px solid #dc3545;
+  }
+  
+  /* Task Content */
+  .task-content {
+    flex-grow: 1;
+    margin-bottom: 10px;
+  }
+  
+  .task-name {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+    font-size: 1.1em;
+    letter-spacing: 0.3px;
+    color: #333;
+  }
+  
+  .task-date {
+    display: block;
+    color: #666;
+    transition: color 0.3s ease;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+  }
+  
+  .task-status,
+  .task-priority {
+    font-size: 0.9em;
+    margin: 2px 0;
+  }
+  
+  /* Task Actions */
+  .task-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .task-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 6px;
+    border-radius: 6px;
+  }
+  
+  /* Mark as Complete Button */
+  .complete-button {
+    color: #28a745;
+  }
+  .complete-button:hover {
+    background-color: #e0f2e9;
+    transform: scale(1.1);
+  }
+  
+  /* Edit/Delete Buttons */
+  .edit-button {
+    color: #ffc107;
+  }
+  .edit-button:hover {
+    background-color: #fff3cd;
+    transform: scale(1.1);
+  }
+  
+  .delete-button {
+    color: #dc3545;
+  }
+  .delete-button:hover {
+    background-color: #f8d7da;
+    transform: scale(1.1);
+  }
+  
+  /* No Tasks Message */
+  .no-tasks {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  /* Loading Spinner */
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .loading-spinner::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Animations */
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .calendar-view {
+      margin: 10px;
+      padding: 15px;
+    }
+  
+    .calendar-header h3 {
+      font-size: 1.2em;
+    }
+  
+    .add-task-form h4 {
+      font-size: 1em;
+    }
+  
+    .calendar-cell {
+      min-height: 120px;
+      padding: 10px;
+    }
+  
+    .task-name {
+      font-size: 1em;
+    }
+  
+    .task-date {
+      font-size: 0.85em;
+    }
+  
+    .edit-button,
+    .delete-button,
+    .complete-button {
+      font-size: 14px;
+    }
+  
+    .search-filter-bar {
+      flex-direction: column;
+    }
+  
+    .progress-bar-container label {
+      font-size: 0.9em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .calendar-header h3 {
+      font-size: 1.1em;
+    }
+    .add-task-form h4 {
+      font-size: 0.95em;
+    }
+    .task-name {
+      font-size: 1em;
+    }
+    .task-date {
+      font-size: 0.85em;
+    }
+    .edit-button,
+    .delete-button,
+    .complete-button {
+      font-size: 12px;
+    }
+  }
+  
