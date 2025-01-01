@@ -17,7 +17,11 @@ const LoginPage = () => {
       const userCredential = isLogin
         ? await emailLogin(email, password)
         : await emailSignup(email, password);
-      setUser({ name: userCredential.displayName || email });
+      setUser({ 
+        uid : userCredential.uid,
+        name: userCredential.displayName || userCredential.email,
+        email: userCredential.email,
+      });
 
       // Set user's last-read progress
       const progress = JSON.parse(localStorage.getItem("userProgress")) || {};
@@ -33,7 +37,11 @@ const LoginPage = () => {
   const handleGoogleLogin = async () => {
     try {
       const userCredential = await googleLogin();
-      setUser({ name: userCredential.displayName || userCredential.email });
+      setUser({
+        uid: userCredential.uid,
+        name: userCredential.displayName || userCredential.email,
+        email: userCredential.email,
+      });
 
       // Set user's last-read progress
       const progress = JSON.parse(localStorage.getItem("userProgress")) || {};

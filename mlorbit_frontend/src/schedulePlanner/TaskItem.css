@@ -1,0 +1,145 @@
+/* TaskItem.css */
+.task-item {
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #222831;
+    border: 1px solid #393e46;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: fadeIn 1s ease-in-out;
+    position: relative; /* for overdue label */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.task-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.overdue-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4c4c;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.task-details h3 {
+    margin: 0;
+    color: #ffd369;
+    font-size: 1.2rem;
+}
+
+.task-details p {
+    margin: 0;
+    color: #eeeeee;
+    line-height: 1.5;
+}
+
+.notes-section {
+    font-style: italic;
+    color: #bdbdbd;
+    padding: 10px;
+    background-color: #393e46;
+    border-radius: 4px;
+}
+
+.task-buttons,
+.edit-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.task-buttons button,
+.edit-buttons button {
+    padding: 8px 12px;
+    background-color: #ffd369;
+    color: #222831;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.task-buttons button:hover,
+.edit-buttons button:hover {
+    background-color: #f9c25c;
+    transform: translateY(-2px);
+}
+
+.task-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1rem;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 19px;
+    width: 19px;
+    background-color: #ccc;
+    border-radius: 3px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #bfbfbf;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #ffd369;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #222831;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}

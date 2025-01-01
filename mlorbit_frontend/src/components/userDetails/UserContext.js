@@ -1,25 +1,25 @@
-// src/components/userDetails/UserContext.js
+// UserContext.js
 import React, { createContext, useState, useEffect } from "react";
-import { auth } from "../../login/firebaseConfig"; // Corrected path
 import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../login/firebaseConfig"; // Adjust the path as necessary
 
 export const UserContext = createContext();
 
-/**
- * UserProvider Component
- * Provides user authentication state to the entire application.
- *
- * @param {React.ReactNode} children - The child components that require access to user state.
- * @returns {React.ReactNode} - The context provider with user state.
- */
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // To handle loading state
 
   useEffect(() => {
+    // Listen for authentication state changes
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
+      if (currentUser) {
+        setUser({
+          uid: currentUser.uid,
+          email: currentUser.email,
+          displayName: currentUser.displayName,
+        });
+      } else {
+        setUser(null);
+      }
     });
 
     // Cleanup subscription on unmount
@@ -27,7 +27,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser, loading }}>
+    <UserContext.Provider value={{ user, setUser }}>
       {children}
     </UserContext.Provider>
   );

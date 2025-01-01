@@ -1,6 +1,6 @@
 // src/App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -17,13 +17,14 @@ import DataStructures from "./pages/DataStructures";
 import MachineLearning from "./pages/MachineLearning";
 import ExploreML from "./ExploreML/ExploreML";
 import AdvancedPDFViewer from "./ExploreML/AdvancedPDFViewer";
+import SchedulePlanner from "./schedulePlanner/SchedulePlanner";
 
 // Protected Pages
-import DSAProgress from "./dsaProgress/components/DSAProgress"; // Corrected path
+import DSAProgress from "./dsaProgress/components/DSAProgress";
 
 // User Context and Private Routes
-import { UserProvider } from "./components/userDetails/UserContext"; // Corrected path
-import PrivateRoute from "./components/PrivateRoute"; // Corrected path
+import { UserProvider } from "./components/userDetails/UserContext";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -52,7 +53,15 @@ function App() {
           <Route path="/explore-ml" element={<ExploreML />} />
           <Route path="/view-pdf" element={<AdvancedPDFViewer />} />
 
-          {/* Protected Pages */}
+          {/* Protected Routes */}
+          <Route
+            path="/schedule-planner"
+            element={
+              <PrivateRoute>
+                <SchedulePlanner />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/dsa-progress"
             element={
@@ -61,6 +70,9 @@ function App() {
               </PrivateRoute>
             }
           />
+
+          {/* Catch-All Route */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         {/* Footer will remain visible on all pages */}
         <Footer />
