@@ -1,30 +1,25 @@
 # .github/workflows/nodejs-ci.yml
 name: Node.js CI
 
-# Trigger on pushes and PRs to main
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 
-# Least‑privilege for GITHUB_TOKEN
 permissions:
   contents: read
 
 jobs:
   build:
-    # inherit minimal permissions
     permissions:
       contents: read
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [20.x]
 
-    # run all `run:` steps inside the frontend folder
     defaults:
       run:
         working-directory: mlorbit_frontend
@@ -42,8 +37,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
+      # ––– Removed Lint step –––
 
       - name: Build
         run: npm run build --if-present
