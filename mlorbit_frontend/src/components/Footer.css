@@ -1,11 +1,15 @@
 .footer {
-  background-color: #1f1f1f;
+  background-color: rgba(31, 31, 31, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   color: #f0f0f0;
   padding: 50px 20px 30px;
   font-family: "Arial", sans-serif;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
   margin-top: 40px;
   position: relative;
+  z-index: 1;
 }
 
 .footer::before {
@@ -16,6 +20,8 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(45deg, rgba(255,111,97,0.05), rgba(0,0,0,0.1));
+  pointer-events: none;
+  z-index: -1;
 }
 
 .footer-container {
@@ -131,7 +137,6 @@
   font-weight: 600;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .footer-top {
     flex-direction: column;
