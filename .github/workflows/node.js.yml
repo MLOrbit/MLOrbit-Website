@@ -1,0 +1,63 @@
+# .github/workflows/nodejs-ci.yml
+name: Node.js CI
+
+# Trigger on pushes and PRs to main
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Least‑privilege for GITHUB_TOKEN
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # inherit minimal permissions
+    permissions:
+      contents: read
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        # test against one supported Node version
+        node-version: [20.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build (if applicable)
+        run: npm run build --if-present
+
+      - name: Test
+        run: npm test
+
+  # Optional: deploy built site to GitHub Pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
