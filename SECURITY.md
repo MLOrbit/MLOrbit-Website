@@ -2,20 +2,24 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+We are committed to maintaining the security of the MLOrbit website. The following versions are currently supported with security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| 1.0.x   | ✅ Yes              |
+| < 1.0   | ❌ No               |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability in this project, please follow the steps below:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+1. **Do not open a public issue.**
+2. Send an email to *ayushi3368@gmail.com* with a detailed description of the vulnerability.
+3. Include:
+   - A clear description of the issue
+   - Steps to reproduce (if applicable)
+   - Possible impact and suggested remediation
+4. You will receive an acknowledgment within **72 hours**.
+5. If verified, we aim to release a patch or mitigation within **7–10 working days**.
+
+All reports are treated as confidential and are appreciated regardless of scope or severity.
