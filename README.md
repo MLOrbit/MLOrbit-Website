@@ -1,7 +1,6 @@
 # MLOrbit
 
 Welcome to [MLOrbit](https://mlorbit.netlify.app), your comprehensive hub for algorithms and machine learning resources.
-
 ## Features
 
 - **Educational Content**: Access a wide range of tutorials and articles on algorithms and machine learning concepts.
