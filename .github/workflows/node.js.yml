@@ -39,12 +39,16 @@ jobs:
         run: npm ci
 
       - name: Lint
+        working-directory: ./mlorbit_frontend
         run: npm run lint
 
-      - name: Build (if applicable)
+      # ─────── Build (if applicable) inside mlorbit_frontend ───────
+      - name: Build
+        working-directory: ./mlorbit_frontend
         run: npm run build --if-present
 
       - name: Test
+        working-directory: ./mlorbit_frontend
         run: npm test
 
   # Optional: deploy built site to GitHub Pages
@@ -60,4 +64,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          # NOTE: build output now lives under mlorbit_frontend/build
+          publish_dir: ./mlorbit_frontend/build
