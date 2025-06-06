@@ -36,6 +36,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
+        working-directory: ./mlorbit_frontend
         run: npm ci
 
       - name: Lint
