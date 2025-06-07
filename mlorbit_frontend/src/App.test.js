@@ -1,11 +1,6 @@
-// mlorbit_frontend/src/App.test.js
-
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-
-// ────────── Mock your own components so App renders without pulling in heavy child code ──────────
-// Any component that App imports should be stubbed. We simply return a minimal <div> placeholder.
 
 // Navbar & Footer
 jest.mock("./components/Navbar", () => () => <div>Navbar</div>);
@@ -49,7 +44,6 @@ jest.mock("./components/userDetails/UserContext", () => ({
 jest.mock("./components/PrivateRoute", () => ({ children }) => <>{children}</>);
 
 test("App renders Navbar and Footer", () => {
-  // Just render App directly—App already contains a <BrowserRouter>
   render(<App />);
 
   // Assert that our stubbed Navbar and Footer appear
